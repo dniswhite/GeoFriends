@@ -123,12 +123,12 @@
         if (passwordConfirm.length == 0) {
             [self.textPasswordConfirm becomeFirstResponder];
             
-            errorMessage = [errorMessage stringByAppendingString:@"a Password"];
+            errorMessage = [@"" stringByAppendingString:@"a Password"];
         }
         if (password.length == 0) {
             [self.textPassword becomeFirstResponder];
             
-            errorMessage = [errorMessage stringByAppendingString:@"a Password"];
+            errorMessage = [@"" stringByAppendingString:@"a Password"];
         }
         if (email.length == 0) {
             [self.textEmailAddress becomeFirstResponder];
@@ -136,7 +136,7 @@
             if (errorMessage.length == 0) {
                 errorMessage = [errorMessage stringByAppendingString:@"your eMail address"];
             } else {
-                errorMessage = [@"a eMail address and " stringByAppendingString:errorMessage];
+                errorMessage = [@"your eMail address and " stringByAppendingString:errorMessage];
             }
         }
         if (username.length == 0) {
