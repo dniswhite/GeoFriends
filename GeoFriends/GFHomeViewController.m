@@ -8,6 +8,8 @@
 
 #import "GFHomeViewController.h"
 
+#import <Parse/Parse.h>
+
 @interface GFHomeViewController ()
 
 @end
@@ -25,6 +27,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+
+    [[self navigationController] setNavigationBarHidden:NO];
+    
     [self setupHandlers];
 }
 
@@ -36,6 +41,8 @@
 }
 
 -(void) logout {
+    [PFUser logOut];
+    [[self delegate] userLoggedOut:self];
 }
 
 -(void)hideKeyboard {

@@ -8,6 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
+@class GFHomeViewController;
+
+@protocol GFHomeDelegate <NSObject>
+
+-(void) userLoggedOut: (GFHomeViewController *) controller;
+
+@end
+
 @interface GFHomeViewController : UIViewController
+
+@property (nonatomic, weak) id<GFHomeDelegate> delegate;
 
 @end

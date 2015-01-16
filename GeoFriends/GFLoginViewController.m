@@ -64,16 +64,18 @@
 }
 
 - (IBAction)loginUser:(id)sender {
-    [self handleUserLogin];
+    if([self validateFields] == YES) {
+        [self handleUserLogin];
+    }
 }
 
 -(void) handleUserLogin {
     if ([self validateFields] == YES) {
         PFUser *user = [PFUser user];
-        user.username = self.textUserName.text;
-        user.password = self.textPassword.text;
+        NSString *username = self.textUserName.text;
+        NSString *password = self.textPassword.text;
         
-        [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        [PFUser logInWithUsernameInBackground:username password:password block:^(PFUser *user, NSError *error) {
             if (!error) {
                 [self.delegate userLogingComplete:self];
             } else {

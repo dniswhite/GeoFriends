@@ -14,7 +14,7 @@
 #import <Parse/Parse.h>
 
 @interface AppDelegate ()
-<GFLoginDelegate>
+<GFLoginDelegate, GFHomeDelegate>
 
 @end
 
@@ -45,6 +45,7 @@
 
 -(void) presentUserView {
     if ([PFUser currentUser]) {
+        PFUser *user = [PFUser currentUser];
         [self displayGFHomeView];
     } else {
         [self displayGFLoginView];
@@ -53,7 +54,13 @@
 
 -(void) displayGFHomeView {
     GFHomeViewController *homeViewController = [[GFHomeViewController alloc] initWithNibName:nil bundle:nil];
+    homeViewController.delegate = self;
+    
     [[self navigationController] setViewControllers:@[homeViewController] animated:NO];
+}
+
+-(void) userLoggedOut:(GFHomeViewController *)controller {
+    [self displayGFLoginView];
 }
 
 -(void) displayGFLoginView {
