@@ -25,7 +25,7 @@
     
     // ****************************************************************************
     // Parse initialization
-    [Parse setApplicationId:@"appID" clientKey:@"clientKey"];
+    [Parse setApplicationId:@"appId" clientKey:@"clientKey"];
     // ****************************************************************************
     
     self.navigationController = [[UINavigationController alloc] initWithRootViewController:[[UIViewController alloc] init]];
@@ -45,7 +45,6 @@
 
 -(void) presentUserView {
     if ([PFUser currentUser]) {
-        PFUser *user = [PFUser currentUser];
         [self displayGFHomeView];
     } else {
         [self displayGFLoginView];

@@ -7,11 +7,12 @@
 //
 
 #import "GFNewUserViewController.h"
+#import "GFUserProfileViewController.h"
 
 #import <Parse/Parse.h>
 
 @interface GFNewUserViewController ()
-<UITextFieldDelegate>
+<UITextFieldDelegate, GFUserProfileDelegate>
 @end
 
 @implementation GFNewUserViewController
@@ -89,14 +90,21 @@
         
         [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
             if (!error) {
-                [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
-                [[self delegate] createNewUserComplete:self];
+                GFUserProfileViewController *userProfile = [[GFUserProfileViewController alloc] initWithNibName:nil bundle:nil];
+                userProfile.delegate = self;
+                
+                [[self navigationController] presentViewController:userProfile animated:YES completion:nil];
             } else {
                 UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:[error userInfo][@"error"] message:nil delegate:self cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
                 [alertView show];
             }
         }];
     }
+}
+
+-(void) userProfileComplete:(GFUserProfileViewController *)controller {
+    [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+    [[self delegate] createNewUserComplete:self];
 }
 
 -(BOOL) isValidEmail:(NSString *)checkString

@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MapKit/MapKit.h>
+#import <CoreLocation/CoreLocation.h>
 
 @class GFHomeViewController;
 
@@ -18,6 +20,9 @@
 
 @interface GFHomeViewController : UIViewController
 
+@property (nonatomic, strong) CLLocationManager *locationManager;
+
+@property (weak, nonatomic) IBOutlet MKMapView *mapFriends;
 @property (nonatomic, weak) id<GFHomeDelegate> delegate;
 
 @end

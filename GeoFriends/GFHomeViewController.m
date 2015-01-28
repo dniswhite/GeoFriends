@@ -11,6 +11,8 @@
 #import <Parse/Parse.h>
 
 @interface GFHomeViewController ()
+<CLLocationManagerDelegate>
+
 
 @end
 
@@ -29,6 +31,15 @@
     [super viewDidLoad];
 
     [[self navigationController] setNavigationBarHidden:NO];
+    [[self mapFriends] setShowsUserLocation:YES];
+    
+    self.locationManager = [[CLLocationManager alloc] init];
+    
+    [[self locationManager] setDelegate:self];
+    [[self locationManager] requestWhenInUseAuthorization];
+
+    [[self locationManager] setDesiredAccuracy:kCLLocationAccuracyBest];
+    [[self locationManager] startUpdatingLocation];
     
     [self setupHandlers];
 }
@@ -52,6 +63,14 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void) locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
+    
+}
+
+-(void) locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
+    
 }
 
 @end

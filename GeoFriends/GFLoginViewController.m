@@ -9,10 +9,12 @@
 #import "GFLoginViewController.h"
 #import "GFNewUserViewController.h"
 
+#import "GFUserProfileViewController.h"
+
 #import <Parse/Parse.h>
 
 @interface GFLoginViewController ()
-<UITextFieldDelegate, GFNewUserDelegate>
+<UITextFieldDelegate, GFNewUserDelegate, GFUserProfileDelegate>
 @end
 
 @implementation GFLoginViewController
@@ -125,9 +127,19 @@
 }
 
 - (IBAction)createUser:(id)sender {
-    GFNewUserViewController *newUserViewController = [[GFNewUserViewController alloc] initWithNibName:nil bundle:nil];
-    newUserViewController.delegate = self;
-    [[self navigationController] presentViewController:newUserViewController animated:YES completion:nil];
+//    GFNewUserViewController *newUserViewController = [[GFNewUserViewController alloc] initWithNibName:nil bundle:nil];
+//    newUserViewController.delegate = self;
+//    [[self navigationController] presentViewController:newUserViewController animated:YES completion:nil];
+
+    GFUserProfileViewController *userProfile = [[GFUserProfileViewController alloc] initWithNibName:nil bundle:nil];
+    userProfile.delegate = self;
+    
+    [[self navigationController] presentViewController:userProfile animated:YES completion:nil];
+}
+
+-(void) userProfileComplete:(GFUserProfileViewController *)controller {
+    [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+    [self.delegate userLogingComplete:self];
 }
 
 -(void) createNewUserComplete:(GFNewUserViewController *)controller {

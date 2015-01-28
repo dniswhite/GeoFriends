@@ -35,6 +35,9 @@
 		8C3B602F1A63AA0A00847621 /* ParseCrashReporting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C3B602A1A63AA0A00847621 /* ParseCrashReporting.framework */; };
 		8C3B60301A63AA0A00847621 /* ParseFacebookUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C3B602B1A63AA0A00847621 /* ParseFacebookUtils.framework */; };
 		8C3B60311A63AA0A00847621 /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C3B602C1A63AA0A00847621 /* ParseUI.framework */; };
+		8C3B60331A69A45800847621 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C3B60321A69A45800847621 /* MapKit.framework */; };
+		8C3B609F1A772EB100847621 /* GFUserProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C3B609D1A772EB100847621 /* GFUserProfileViewController.m */; };
+		8C3B60A01A772EB100847621 /* GFUserProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8C3B609E1A772EB100847621 /* GFUserProfileViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -72,6 +75,10 @@
 		8C3B602A1A63AA0A00847621 /* ParseCrashReporting.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseCrashReporting.framework; sourceTree = "<group>"; };
 		8C3B602B1A63AA0A00847621 /* ParseFacebookUtils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseFacebookUtils.framework; sourceTree = "<group>"; };
 		8C3B602C1A63AA0A00847621 /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseUI.framework; sourceTree = "<group>"; };
+		8C3B60321A69A45800847621 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		8C3B609C1A772EB100847621 /* GFUserProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GFUserProfileViewController.h; sourceTree = "<group>"; };
+		8C3B609D1A772EB100847621 /* GFUserProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GFUserProfileViewController.m; sourceTree = "<group>"; };
+		8C3B609E1A772EB100847621 /* GFUserProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GFUserProfileViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +86,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8C3B60331A69A45800847621 /* MapKit.framework in Frameworks */,
 				8C3B60311A63AA0A00847621 /* ParseUI.framework in Frameworks */,
 				8C3B60261A63A99F00847621 /* Accounts.framework in Frameworks */,
 				8C3B60241A63A97D00847621 /* AudioToolbox.framework in Frameworks */,
@@ -145,6 +153,7 @@
 		8C3B5FEE1A6307E700847621 /* GeoFriendsViews */ = {
 			isa = PBXGroup;
 			children = (
+				8C3B609E1A772EB100847621 /* GFUserProfileViewController.xib */,
 				8C3B60081A63101A00847621 /* GFHomeViewController.xib */,
 				8C3B5FD71A62F47800847621 /* LaunchScreen.xib */,
 				8C3B60031A630FE000847621 /* GFNewUserViewController.xib */,
@@ -156,6 +165,8 @@
 		8C3B5FF51A630E6100847621 /* GeoFriendsControllers */ = {
 			isa = PBXGroup;
 			children = (
+				8C3B609C1A772EB100847621 /* GFUserProfileViewController.h */,
+				8C3B609D1A772EB100847621 /* GFUserProfileViewController.m */,
 				8C3B5FFC1A630F6900847621 /* GFLoginViewController.h */,
 				8C3B5FFD1A630F6900847621 /* GFLoginViewController.m */,
 				8C3B60011A630FE000847621 /* GFNewUserViewController.h */,
@@ -169,6 +180,7 @@
 		8C3B600D1A63A8BD00847621 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8C3B60321A69A45800847621 /* MapKit.framework */,
 				8C3B60271A63A9B100847621 /* Parse Frameworks */,
 				8C3B60251A63A99F00847621 /* Accounts.framework */,
 				8C3B60231A63A97D00847621 /* AudioToolbox.framework */,
@@ -256,6 +268,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8C3B60A01A772EB100847621 /* GFUserProfileViewController.xib in Resources */,
 				8C3B5FD91A62F47800847621 /* LaunchScreen.xib in Resources */,
 				8C3B60051A630FE000847621 /* GFNewUserViewController.xib in Resources */,
 				8C3B5FD61A62F47800847621 /* Images.xcassets in Resources */,
@@ -271,6 +284,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8C3B609F1A772EB100847621 /* GFUserProfileViewController.m in Sources */,
 				8C3B60091A63101A00847621 /* GFHomeViewController.m in Sources */,
 				8C3B5FCE1A62F47800847621 /* AppDelegate.m in Sources */,
 				8C3B60041A630FE000847621 /* GFNewUserViewController.m in Sources */,
