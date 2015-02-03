@@ -163,6 +163,7 @@
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstItem="vqv-zc-Jjr" firstAttribute="leading" secondItem="Smp-0f-Znj" secondAttribute="leading" constant="14" id="O7O-8j-tyl"/>
+                        <constraint firstAttribute="height" constant="50" id="Z4O-ka-apr"/>
                         <constraint firstItem="Gof-vG-OzN" firstAttribute="leading" secondItem="vqv-zc-Jjr" secondAttribute="trailing" constant="18" id="ZWf-Yt-tfr"/>
                         <constraint firstAttribute="bottom" secondItem="Gof-vG-OzN" secondAttribute="bottom" constant="10" id="hI3-Fn-seD"/>
                         <constraint firstItem="Gof-vG-OzN" firstAttribute="top" secondItem="Smp-0f-Znj" secondAttribute="top" constant="5" id="jJa-iN-MKI"/>
@@ -173,7 +174,6 @@
             </subviews>
             <color key="backgroundColor" red="0.5706348457" green="0.8274459394" blue="1" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
-                <constraint firstItem="1mI-Xk-ia7" firstAttribute="top" secondItem="Smp-0f-Znj" secondAttribute="bottom" constant="98" id="0z5-dF-hBq"/>
                 <constraint firstItem="xOw-zS-0Zv" firstAttribute="leading" secondItem="RSR-Oe-A5S" secondAttribute="leading" id="922-dH-sql"/>
                 <constraint firstItem="xOw-zS-0Zv" firstAttribute="centerX" secondItem="ohN-Py-wje" secondAttribute="centerX" id="9SM-0I-ly9"/>
                 <constraint firstItem="RSR-Oe-A5S" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="234" id="9cQ-J2-xFf"/>

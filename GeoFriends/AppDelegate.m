@@ -10,11 +10,12 @@
 
 #import "GFLoginViewController.h"
 #import "GFHomeViewController.h"
+#import "GFUserProfileViewController.h"
 
 #import <Parse/Parse.h>
 
 @interface AppDelegate ()
-<GFLoginDelegate, GFHomeDelegate>
+<GFLoginDelegate, GFHomeDelegate, GFUserProfileDelegate>
 
 @end
 
@@ -45,7 +46,14 @@
 
 -(void) presentUserView {
     if ([PFUser currentUser]) {
-        [self displayGFHomeView];
+        
+        PFUser *user = [PFUser currentUser];
+        NSString *name = user[@"name"];
+        if (name) {
+            [self displayGFHomeView];
+        } else {
+            [self displayGFUserProfileView];
+        }
     } else {
         [self displayGFLoginView];
     }
@@ -59,7 +67,7 @@
 }
 
 -(void) userLoggedOut:(GFHomeViewController *)controller {
-    [self displayGFLoginView];
+    [self presentUserView];
 }
 
 -(void) displayGFLoginView {
@@ -70,6 +78,17 @@
 }
 
 - (void) userLogingComplete:(GFLoginViewController *)controller {
+    [self presentUserView];
+}
+
+-(void) displayGFUserProfileView {
+    GFUserProfileViewController *userProfile = [[GFUserProfileViewController alloc] initWithNibName:nil bundle:nil];
+    userProfile.delegate = self;
+    
+    [[self navigationController] setViewControllers:@[userProfile] animated:YES];
+}
+
+-(void) userProfileComplete:(GFUserProfileViewController *)controller {
     [self displayGFHomeView];
 }
 

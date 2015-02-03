@@ -9,12 +9,10 @@
 #import "GFLoginViewController.h"
 #import "GFNewUserViewController.h"
 
-#import "GFUserProfileViewController.h"
-
 #import <Parse/Parse.h>
 
 @interface GFLoginViewController ()
-<UITextFieldDelegate, GFNewUserDelegate, GFUserProfileDelegate>
+<UITextFieldDelegate, GFNewUserDelegate>
 @end
 
 @implementation GFLoginViewController
@@ -73,7 +71,6 @@
 
 -(void) handleUserLogin {
     if ([self validateFields] == YES) {
-        PFUser *user = [PFUser user];
         NSString *username = self.textUserName.text;
         NSString *password = self.textPassword.text;
         
@@ -127,19 +124,10 @@
 }
 
 - (IBAction)createUser:(id)sender {
-//    GFNewUserViewController *newUserViewController = [[GFNewUserViewController alloc] initWithNibName:nil bundle:nil];
-//    newUserViewController.delegate = self;
-//    [[self navigationController] presentViewController:newUserViewController animated:YES completion:nil];
+    GFNewUserViewController *newUserViewController = [[GFNewUserViewController alloc] initWithNibName:nil bundle:nil];
+    newUserViewController.delegate = self;
 
-    GFUserProfileViewController *userProfile = [[GFUserProfileViewController alloc] initWithNibName:nil bundle:nil];
-    userProfile.delegate = self;
-    
-    [[self navigationController] presentViewController:userProfile animated:YES completion:nil];
-}
-
--(void) userProfileComplete:(GFUserProfileViewController *)controller {
-    [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
-    [self.delegate userLogingComplete:self];
+    [[self navigationController] presentViewController:newUserViewController animated:YES completion:nil];
 }
 
 -(void) createNewUserComplete:(GFNewUserViewController *)controller {
