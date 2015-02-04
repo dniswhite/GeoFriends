@@ -49,7 +49,10 @@
         
         PFUser *user = [PFUser currentUser];
         NSString *name = user[@"name"];
-        if (name) {
+        NSString *location = user[@"location" ];
+        NSString *bio = user[@"bio"];
+        
+        if (name.length != 0 && location.length != 0 && bio.length != 0) {
             [self displayGFHomeView];
         } else {
             [self displayGFUserProfileView];
