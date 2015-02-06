@@ -7,11 +7,15 @@
 //
 
 #import "GFHomeViewController.h"
+#import "GFUserProfileViewController.h"
 
 #import <Parse/Parse.h>
 
+#define METERS_MILE 1609.344
+#define METERS_FEET 3.28084
+
 @interface GFHomeViewController ()
-<CLLocationManagerDelegate>
+<CLLocationManagerDelegate, GFUserProfileDelegate>
 
 
 @end
@@ -49,11 +53,23 @@
     [[self view] addGestureRecognizer:recognizer];
     
     [[self navigationItem] setLeftBarButtonItem:[[UIBarButtonItem alloc] initWithTitle:@"Logout" style:UIBarButtonItemStylePlain target:self action:@selector(logout)]];
+    [[self navigationItem] setRightBarButtonItem:[[UIBarButtonItem alloc] initWithTitle:@"Profile" style:UIBarButtonItemStylePlain target:self action:@selector(profile)]];
 }
 
 -(void) logout {
     [PFUser logOut];
     [[self delegate] userLoggedOut:self];
+}
+
+-(void) profile {
+    GFUserProfileViewController *userProfile = [[GFUserProfileViewController alloc] initWithNibName:nil bundle:nil];
+    userProfile.delegate = self;
+
+    [[self navigationController] presentViewController:userProfile animated:YES completion:nil];
+}
+
+-(void) userProfileComplete:(GFUserProfileViewController *)controller {
+    
 }
 
 -(void)hideKeyboard {
@@ -70,7 +86,9 @@
 }
 
 -(void) locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
+    CLLocation *location = locations.lastObject;
     
-}
+    MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(location.coordinate, 2*METERS_MILE, 2*METERS_MILE);
+    [[self mapFriends] setRegion:viewRegion animated:YES];}
 
 @end

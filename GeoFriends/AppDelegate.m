@@ -29,16 +29,16 @@
     [Parse setApplicationId:@"appId" clientKey:@"clientKey"];
     // ****************************************************************************
     
-    self.navigationController = [[UINavigationController alloc] initWithRootViewController:[[UIViewController alloc] init]];
+    [self setNavigationController: [[UINavigationController alloc] initWithRootViewController:[[UIViewController alloc] init]]];
     
     // what screen do we switch to??
     [self presentUserView];
     
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
 
-    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    self.window.rootViewController = self.navigationController;
-    [self.window makeKeyAndVisible];
+    [self setWindow:[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]]];
+    [[self window] setRootViewController:[self navigationController]];
+    [[self window] makeKeyAndVisible];
 
     // Override point for customization after application launch.
     return YES;
