@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
     </dependencies>
@@ -27,14 +27,25 @@
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="URP-Ra-on5">
+                    <rect key="frame" x="277" y="512" width="46" height="30"/>
+                    <state key="normal" title="Button">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="getDataFromServer:" destination="-1" eventType="touchUpInside" id="6nl-lw-gRH"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="7La-ut-DLZ" secondAttribute="trailing" id="1PM-8N-OpH"/>
                 <constraint firstItem="4fH-eM-iFV" firstAttribute="centerX" secondItem="7La-ut-DLZ" secondAttribute="centerX" id="AVK-12-1g2"/>
                 <constraint firstAttribute="bottom" secondItem="4fH-eM-iFV" secondAttribute="bottom" constant="96" id="C8v-ps-bNL"/>
+                <constraint firstItem="URP-Ra-on5" firstAttribute="centerX" secondItem="4fH-eM-iFV" secondAttribute="centerX" id="FOH-dw-a4q"/>
                 <constraint firstItem="7La-ut-DLZ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="JCP-FK-PdZ"/>
                 <constraint firstItem="7La-ut-DLZ" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Kw5-gP-2hN"/>
+                <constraint firstItem="URP-Ra-on5" firstAttribute="top" secondItem="4fH-eM-iFV" secondAttribute="bottom" constant="8" symbolic="YES" id="eoH-wQ-HwA"/>
             </constraints>
             <point key="canvasLocation" x="245" y="321"/>
         </view>

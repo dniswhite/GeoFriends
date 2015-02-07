@@ -91,4 +91,27 @@
     MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(location.coordinate, 2*METERS_MILE, 2*METERS_MILE);
     [[self mapFriends] setRegion:viewRegion animated:YES];}
 
+- (IBAction)getDataFromServer:(id)sender {
+    NSString *urlString = [baseURLString stringByAppendingString:@"/stations/radius/39.0787694/-119.7838515/5/reg/Price/rfej9napna.json?"];
+    NSURL *url = [NSURL URLWithString:urlString];
+    NSURLRequest* request = [NSURLRequest requestWithURL:url];
+    
+    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+    operation.responseSerializer = [AFJSONResponseSerializer serializer];
+    
+    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSString *string = @"some data";
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error Retrieving Fuel Information"
+                                                            message:[error localizedDescription]
+                                                           delegate:nil
+                                                  cancelButtonTitle:@"Ok"
+                                                  otherButtonTitles:nil];
+        [alertView show];
+    }];
+    
+    // 5
+    [operation start];
+}
 @end

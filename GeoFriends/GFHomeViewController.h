@@ -9,6 +9,9 @@
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
 #import <CoreLocation/CoreLocation.h>
+#import "AFNetworking.h"
+
+static NSString *baseURLString = @"http://devapi.mygasfeed.com/";
 
 @class GFHomeViewController;
 
@@ -24,5 +27,6 @@
 
 @property (weak, nonatomic) IBOutlet MKMapView *mapFriends;
 @property (nonatomic, weak) id<GFHomeDelegate> delegate;
+- (IBAction)getDataFromServer:(id)sender;
 
 @end
