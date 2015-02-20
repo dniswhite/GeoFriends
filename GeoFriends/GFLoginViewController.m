@@ -76,7 +76,7 @@
         
         [PFUser logInWithUsernameInBackground:username password:password block:^(PFUser *user, NSError *error) {
             if (!error) {
-                [self.delegate userLogingComplete:self];
+                [self.delegate userLoginComplete:self];
             } else {
                 UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:[error userInfo][@"error"] message:nil delegate:self cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
                 [alertView show];
@@ -131,6 +131,6 @@
 }
 
 -(void) createNewUserComplete:(GFNewUserViewController *)controller {
-    [self.delegate userLogingComplete:self];
+    [self.delegate userLoginComplete:self];
 }
 @end

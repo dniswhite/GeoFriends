@@ -26,7 +26,7 @@
     
     // ****************************************************************************
     // Parse initialization
-    [Parse setApplicationId:@"wQeaECN0mRCm86yDEJvQbUipzcA6wa8ddHNT3Bef" clientKey:@"Gja68ZTeAOeSQQ7ONCYHLzbhUglkKwfoDBj09TkV"];
+    [Parse setApplicationId:@"appId" clientKey:@"clientKey"];
     // ****************************************************************************
     
     [self setNavigationController: [[UINavigationController alloc] initWithRootViewController:[[UIViewController alloc] init]]];
@@ -38,6 +38,7 @@
 
     [self setWindow:[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]]];
     [[self window] setRootViewController:[self navigationController]];
+    [[self window] setBackgroundColor:[UIColor whiteColor]];
     [[self window] makeKeyAndVisible];
 
     // Override point for customization after application launch.
@@ -63,10 +64,24 @@
 }
 
 -(void) displayGFHomeView {
+    UITabBarController *tabbarController = [[UITabBarController alloc] init];
+
     GFHomeViewController *homeViewController = [[GFHomeViewController alloc] initWithNibName:nil bundle:nil];
     homeViewController.delegate = self;
     
-    [[self navigationController] setViewControllers:@[homeViewController] animated:NO];
+    GFUserProfileViewController *profileViewController = [[GFUserProfileViewController alloc] initWithNibName:nil bundle:nil];
+    
+    [[profileViewController tabBarItem] setTitle:@"Profile"];
+    [[profileViewController tabBarItem] setImage:[UIImage imageNamed:@"id_profile"]];
+    
+    [[homeViewController tabBarItem] setTitle:@"Friends"];
+    [[homeViewController tabBarItem] setImage:[UIImage imageNamed:@"friends"]];
+    
+    [tabbarController setViewControllers:[NSArray arrayWithObjects:homeViewController, profileViewController, nil] animated:YES];
+    
+    [[tabbarController tabBar] setBarTintColor:[UIColor blackColor]];
+    
+    [[self navigationController] setViewControllers:@[tabbarController] animated:NO];
 }
 
 -(void) userLoggedOut:(GFHomeViewController *)controller {
@@ -80,7 +95,7 @@
     [[self navigationController] setViewControllers:@[loginViewController] animated:NO];
 }
 
-- (void) userLogingComplete:(GFLoginViewController *)controller {
+- (void) userLoginComplete:(GFLoginViewController *)controller {
     [self presentUserView];
 }
 

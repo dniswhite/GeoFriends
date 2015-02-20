@@ -99,8 +99,17 @@
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
     operation.responseSerializer = [AFJSONResponseSerializer serializer];
     
+    
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSString *string = @"some data";
+        NSDictionary *data = (NSDictionary *)responseObject;
+        
+        NSArray *stations = data[@"stations"];
+        for (id object in stations) {
+            NSString *debug2 = @"";
+            
+        }
+        NSString *debug1 = @"";
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error Retrieving Fuel Information"

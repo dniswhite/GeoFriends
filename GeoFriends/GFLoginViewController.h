@@ -12,7 +12,7 @@
 
 @protocol GFLoginDelegate <NSObject>
 
-- (void) userLogingComplete: (GFLoginViewController *) controller;
+- (void) userLoginComplete: (GFLoginViewController *) controller;
 
 @end
 @interface GFLoginViewController : UIViewController
