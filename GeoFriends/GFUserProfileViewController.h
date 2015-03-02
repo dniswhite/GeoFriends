@@ -23,6 +23,9 @@
 @property (weak, nonatomic) IBOutlet UITextField *locationText;
 @property (weak, nonatomic) IBOutlet UITextField *urlText;
 @property (weak, nonatomic) IBOutlet UITextField *nameText;
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+
+@property (weak, nonatomic) IBOutlet UIControl *activeField;
 
 - (IBAction)doneClicked:(id)sender;
 

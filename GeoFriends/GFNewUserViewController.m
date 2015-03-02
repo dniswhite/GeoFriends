@@ -92,7 +92,7 @@
                 [self hideKeyboard];
                 [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
                 
-                [[self delegate] self];
+                [[self delegate] createNewUserComplete: self];
             } else {
                 UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:[error userInfo][@"error"] message:nil delegate:self cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
                 [alertView show];

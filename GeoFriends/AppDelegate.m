@@ -26,13 +26,11 @@
     
     // ****************************************************************************
     // Parse initialization
-    [Parse setApplicationId:@"appId" clientKey:@"clientKey"];
+    [Parse setApplicationId:@"wQeaECN0mRCm86yDEJvQbUipzcA6wa8ddHNT3Bef" clientKey:@"Gja68ZTeAOeSQQ7ONCYHLzbhUglkKwfoDBj09TkV"];
     // ****************************************************************************
     
     [self setNavigationController: [[UINavigationController alloc] initWithRootViewController:[[UIViewController alloc] init]]];
-    
-    // what screen do we switch to??
-    [self presentUserView];
+    [self setTabController: [[UITabBarController alloc] init]];
     
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
 
@@ -40,6 +38,9 @@
     [[self window] setRootViewController:[self navigationController]];
     [[self window] setBackgroundColor:[UIColor whiteColor]];
     [[self window] makeKeyAndVisible];
+
+    // what screen do we switch to??
+    [self presentUserView];
 
     // Override point for customization after application launch.
     return YES;
@@ -64,8 +65,6 @@
 }
 
 -(void) displayGFHomeView {
-    UITabBarController *tabbarController = [[UITabBarController alloc] init];
-
     GFHomeViewController *homeViewController = [[GFHomeViewController alloc] initWithNibName:nil bundle:nil];
     homeViewController.delegate = self;
     
@@ -77,11 +76,10 @@
     [[homeViewController tabBarItem] setTitle:@"Friends"];
     [[homeViewController tabBarItem] setImage:[UIImage imageNamed:@"friends"]];
     
-    [tabbarController setViewControllers:[NSArray arrayWithObjects:homeViewController, profileViewController, nil] animated:YES];
+    [[self tabController] setViewControllers:[NSArray arrayWithObjects:homeViewController, profileViewController, nil] animated:YES];
+    [[[self tabController] tabBar] setBarTintColor:[UIColor blackColor]];
     
-    [[tabbarController tabBar] setBarTintColor:[UIColor blackColor]];
-    
-    [[self navigationController] setViewControllers:@[tabbarController] animated:NO];
+    [[self window] setRootViewController:[self tabController]];
 }
 
 -(void) userLoggedOut:(GFHomeViewController *)controller {
@@ -92,6 +90,7 @@
     GFLoginViewController *loginViewController = [[GFLoginViewController alloc] initWithNibName:nil bundle:nil];
     loginViewController.delegate = self;
     
+    [[self window] setRootViewController:[self navigationController]];
     [[self navigationController] setViewControllers:@[loginViewController] animated:NO];
 }
 

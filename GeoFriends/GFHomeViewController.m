@@ -34,7 +34,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    [[self navigationController] setNavigationBarHidden:NO];
     [[self mapFriends] setShowsUserLocation:YES];
     
     self.locationManager = [[CLLocationManager alloc] init];
@@ -51,9 +50,6 @@
 -(void) setupHandlers {
     UITapGestureRecognizer *recognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideKeyboard)];
     [[self view] addGestureRecognizer:recognizer];
-    
-    [[self navigationItem] setLeftBarButtonItem:[[UIBarButtonItem alloc] initWithTitle:@"Logout" style:UIBarButtonItemStylePlain target:self action:@selector(logout)]];
-    [[self navigationItem] setRightBarButtonItem:[[UIBarButtonItem alloc] initWithTitle:@"Profile" style:UIBarButtonItemStylePlain target:self action:@selector(profile)]];
 }
 
 -(void) logout {
@@ -89,7 +85,8 @@
     CLLocation *location = locations.lastObject;
     
     MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(location.coordinate, 2*METERS_MILE, 2*METERS_MILE);
-    [[self mapFriends] setRegion:viewRegion animated:YES];}
+    [[self mapFriends] setRegion:viewRegion animated:YES];
+}
 
 - (IBAction)getDataFromServer:(id)sender {
     NSString *urlString = [baseURLString stringByAppendingString:@"/stations/radius/39.0787694/-119.7838515/5/reg/Price/rfej9napna.json?"];
@@ -122,5 +119,10 @@
     
     // 5
     [operation start];
+}
+
+- (IBAction)logoutUser:(id)sender {
+    [PFUser logOut];
+    [[self delegate] userLoggedOut:self];
 }
 @end

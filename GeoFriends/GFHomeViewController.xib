@@ -36,6 +36,15 @@
                         <action selector="getDataFromServer:" destination="-1" eventType="touchUpInside" id="6nl-lw-gRH"/>
                     </connections>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xht-PX-Ys7">
+                    <rect key="frame" x="277" y="429" width="46" height="30"/>
+                    <state key="normal" title="Button">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="logoutUser:" destination="-1" eventType="touchUpInside" id="ueT-ny-3ps"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
@@ -45,9 +54,18 @@
                 <constraint firstItem="URP-Ra-on5" firstAttribute="centerX" secondItem="4fH-eM-iFV" secondAttribute="centerX" id="FOH-dw-a4q"/>
                 <constraint firstItem="7La-ut-DLZ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="JCP-FK-PdZ"/>
                 <constraint firstItem="7La-ut-DLZ" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Kw5-gP-2hN"/>
+                <constraint firstItem="Xht-PX-Ys7" firstAttribute="leading" secondItem="URP-Ra-on5" secondAttribute="leading" id="YVG-Hc-kDL"/>
+                <constraint firstItem="4fH-eM-iFV" firstAttribute="top" secondItem="Xht-PX-Ys7" secondAttribute="bottom" constant="24" id="dgH-Sl-DIe"/>
                 <constraint firstItem="URP-Ra-on5" firstAttribute="top" secondItem="4fH-eM-iFV" secondAttribute="bottom" constant="8" symbolic="YES" id="eoH-wQ-HwA"/>
             </constraints>
             <point key="canvasLocation" x="245" y="321"/>
         </view>
+        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="6e2-I2-ExR">
+            <rect key="frame" x="0.0" y="0.0" width="46" height="30"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <state key="normal" title="Button">
+                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+            </state>
+        </button>
     </objects>
 </document>

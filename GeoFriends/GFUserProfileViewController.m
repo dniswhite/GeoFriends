@@ -45,6 +45,16 @@
     [self setupHandlers];
 }
 
+-(void) viewDidAppear:(BOOL)animated {
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWasShown:) name:UIKeyboardDidShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillBeHidden:) name:UIKeyboardWillHideNotification object:nil];
+}
+
+-(void) viewDidDisappear:(BOOL)animated {
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardDidShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillHideNotification object:nil];
+}
+
 -(void) setupHandlers {
     UITapGestureRecognizer *recognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideKeyboard)];
     [[self view] addGestureRecognizer:recognizer];
@@ -67,6 +77,27 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)keyboardWasShown:(NSNotification *)notification {
+    NSDictionary* info = [notification userInfo];
+    
+    CGSize keyboardSize = [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
+    
+    CGPoint hiddenField = [[self activeField] frame].origin;
+    CGFloat hiddenFieldHeight = [[self activeField] frame].size.height;
+    
+    CGRect visibleRect = [[self view] frame];
+    visibleRect.size.height -= keyboardSize.height;
+
+    if (!CGRectContainsPoint(visibleRect, hiddenField)) {
+        CGPoint scrollPoint = CGPointMake(0.0, hiddenField.y - visibleRect.size.height + hiddenFieldHeight);
+        [[self scrollView] setContentOffset:scrollPoint animated:YES];
+    }
+}
+
+- (void)keyboardWillBeHidden:(NSNotification *)notification {
+    [[self scrollView] setContentOffset:CGPointZero animated:YES];
 }
 
 -(void)hideKeyboard {
@@ -149,11 +180,16 @@
 
 -(BOOL) textFieldShouldReturn:(UITextField *)textField {
     if (textField == [self nameText]) {
+        [self hideKeyboard];
         [[self urlText] becomeFirstResponder];
     } else if (textField == [self urlText]) {
+        [self hideKeyboard];
         [[self locationText] becomeFirstResponder];
     } else if (textField == [self locationText]) {
+        [self hideKeyboard];
         [[self bioText] becomeFirstResponder];
+    } else {
+        [self hideKeyboard];
     }
     
     return YES;
@@ -165,8 +201,7 @@
         [textView setTextColor:[UIColor blackColor]];
     }
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidShow:) name:UIKeyboardDidShowNotification object:nil];
-    
+    [self setActiveField: (UIControl *)textView];
     [textView becomeFirstResponder];
 }
 
@@ -176,19 +211,19 @@
         [textView setTextColor:[UIColor lightGrayColor]];
     }
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidHide:) name:UIKeyboardDidHideNotification object:nil];
+    [self hideKeyboard];
+    [self setActiveField:nil];
 
     [textView resignFirstResponder];
 }
 
-- (void)keyboardDidShow:(NSNotification *)notification
-{
-    // need to figure out how to move the view
+-(void) textFieldDidBeginEditing:(UITextField *)textField {
+    [self setActiveField:textField];
 }
 
--(void)keyboardDidHide:(NSNotification *)notification
-{
-    // reset view back to normal
+-(void) textFieldDidEndEditing:(UITextField *)textField {
+    [self hideKeyboard];
+    [self setActiveField:nil];
 }
 
 @end

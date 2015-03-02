@@ -28,5 +28,6 @@ static NSString *baseURLString = @"http://devapi.mygasfeed.com/";
 @property (weak, nonatomic) IBOutlet MKMapView *mapFriends;
 @property (nonatomic, weak) id<GFHomeDelegate> delegate;
 - (IBAction)getDataFromServer:(id)sender;
+- (IBAction)logoutUser:(id)sender;
 
 @end
