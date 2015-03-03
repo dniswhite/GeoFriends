@@ -38,12 +38,26 @@
     UITapGestureRecognizer *recognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideKeyboard)];
     [[self view] addGestureRecognizer:recognizer];
     
+    UITapGestureRecognizer *userTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showUserKeyboard:)];
+    [[self viewUserName] addGestureRecognizer:userTap];
+    userTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showUserKeyboard:)];
+    [[self viewPassword] addGestureRecognizer:userTap];
+
     self.textUserName.delegate = self;
     self.textPassword.delegate = self;
 }
 
 -(void)hideKeyboard {
     [[self view] endEditing:YES];
+}
+
+-(void)showUserKeyboard: (UITapGestureRecognizer *) recognizer {
+    UIView * sender = [recognizer view];
+    if (sender == [self viewUserName]) {
+        [[self textUserName] becomeFirstResponder];
+    } else if (sender == [self viewPassword]) {
+        [[self textPassword] becomeFirstResponder];
+    }
 }
 
 - (void)didReceiveMemoryWarning {

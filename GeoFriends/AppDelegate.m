@@ -26,7 +26,7 @@
     
     // ****************************************************************************
     // Parse initialization
-    [Parse setApplicationId:@"wQeaECN0mRCm86yDEJvQbUipzcA6wa8ddHNT3Bef" clientKey:@"Gja68ZTeAOeSQQ7ONCYHLzbhUglkKwfoDBj09TkV"];
+    [Parse setApplicationId:@"appId" clientKey:@"clientKey"];
     // ****************************************************************************
     
     [self setNavigationController: [[UINavigationController alloc] initWithRootViewController:[[UIViewController alloc] init]]];
