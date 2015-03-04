@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
     </dependencies>
@@ -11,6 +11,10 @@
                 <outlet property="textPasswordConfirm" destination="Gof-vG-OzN" id="lo5-OK-kjo"/>
                 <outlet property="textUsername" destination="sPq-Ly-73w" id="pCA-bJ-UQ7"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="viewEmailAddress" destination="RSR-Oe-A5S" id="d9D-NJ-rad"/>
+                <outlet property="viewPassword" destination="Ibo-P5-O2A" id="Wkc-QO-69Y"/>
+                <outlet property="viewPasswordConfirm" destination="Smp-0f-Znj" id="yWJ-nQ-ONk"/>
+                <outlet property="viewUsername" destination="xOw-zS-0Zv" id="f4c-SX-ac4"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>

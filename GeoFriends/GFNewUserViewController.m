@@ -34,6 +34,15 @@
     UITapGestureRecognizer *recognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideKeyboard)];
     [[self view] addGestureRecognizer:recognizer];
     
+    UITapGestureRecognizer *userTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showUserKeyboard:)];
+    [[self viewUsername] addGestureRecognizer:userTap];
+    userTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showUserKeyboard:)];
+    [[self viewEmailAddress] addGestureRecognizer:userTap];
+    userTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showUserKeyboard:)];
+    [[self viewPassword] addGestureRecognizer:userTap];
+    userTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showUserKeyboard:)];
+    [[self viewPasswordConfirm] addGestureRecognizer:userTap];
+
     self.textUsername.delegate = self;
     self.textEmailAddress.delegate = self;
     self.textPassword.delegate = self;
@@ -42,6 +51,19 @@
 
 -(void)hideKeyboard {
     [[self view] endEditing:YES];
+}
+
+-(void)showUserKeyboard: (UITapGestureRecognizer *) recognizer {
+    UIView * sender = [recognizer view];
+    if (sender == [self viewUsername]) {
+        [[self textUsername] becomeFirstResponder];
+    } else if (sender == [self viewEmailAddress]) {
+        [[self textEmailAddress] becomeFirstResponder];
+    } else if (sender == [self viewPassword]) {
+        [[self textPassword] becomeFirstResponder];
+    } else if (sender == [self viewPasswordConfirm]) {
+        [[self textPasswordConfirm] becomeFirstResponder];
+    }
 }
 
 -(void)dismissNewUser {

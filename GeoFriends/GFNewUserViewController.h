@@ -24,4 +24,8 @@
 @property (weak, nonatomic) IBOutlet UITextField *textPassword;
 @property (weak, nonatomic) IBOutlet UITextField *textPasswordConfirm;
 
+@property (weak, nonatomic) IBOutlet UIView *viewUsername;
+@property (weak, nonatomic) IBOutlet UIView *viewEmailAddress;
+@property (weak, nonatomic) IBOutlet UIView *viewPassword;
+@property (weak, nonatomic) IBOutlet UIView *viewPasswordConfirm;
 @end
