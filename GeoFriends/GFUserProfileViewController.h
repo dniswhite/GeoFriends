@@ -27,6 +27,11 @@
 
 @property (weak, nonatomic) IBOutlet UIControl *activeField;
 
+@property (weak, nonatomic) IBOutlet UIView *viewName;
+@property (weak, nonatomic) IBOutlet UIView *viewUrl;
+@property (weak, nonatomic) IBOutlet UIView *viewLocation;
+@property (weak, nonatomic) IBOutlet UIView *viewBio;
+
 - (IBAction)doneClicked:(id)sender;
 
 @end

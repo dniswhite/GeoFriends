@@ -59,6 +59,15 @@
     UITapGestureRecognizer *recognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideKeyboard)];
     [[self view] addGestureRecognizer:recognizer];
     
+    UITapGestureRecognizer *userTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showUserKeyboard:)];
+    [[self viewName] addGestureRecognizer:userTap];
+    userTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showUserKeyboard:)];
+    [[self viewUrl] addGestureRecognizer:userTap];
+    userTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showUserKeyboard:)];
+    [[self viewLocation] addGestureRecognizer:userTap];
+    userTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showUserKeyboard:)];
+    [[self viewBio] addGestureRecognizer:userTap];
+
     [[self.bioText layer] setBorderColor:[[UIColor lightGrayColor] CGColor]];
     [[self.bioText layer] setBorderWidth:.4];
     [[self.bioText layer] setCornerRadius:8.0f];
@@ -102,6 +111,19 @@
 
 -(void)hideKeyboard {
     [[self view] endEditing:YES];
+}
+
+-(void)showUserKeyboard: (UITapGestureRecognizer *) recognizer {
+    UIView * sender = [recognizer view];
+    if (sender == [self viewName]) {
+        [[self nameText] becomeFirstResponder];
+    } else if (sender == [self viewUrl]) {
+        [[self urlText] becomeFirstResponder];
+    } else if (sender == [self viewLocation]) {
+        [[self locationText] becomeFirstResponder];
+    } else if (sender == [self viewBio]) {
+        [[self bioText] becomeFirstResponder];
+    }
 }
 
 - (IBAction)doneClicked:(id)sender {

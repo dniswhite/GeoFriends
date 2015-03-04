@@ -13,6 +13,10 @@
                 <outlet property="scrollView" destination="xTh-vG-jaA" id="TBO-dy-2sb"/>
                 <outlet property="urlText" destination="A1p-ZX-pSd" id="QHE-bQ-zI6"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="viewBio" destination="HQa-Zv-jZH" id="A3C-7h-2TY"/>
+                <outlet property="viewLocation" destination="Ahf-Xb-311" id="Adt-WF-lpY"/>
+                <outlet property="viewName" destination="JBP-cZ-Hgo" id="j90-JU-E4b"/>
+                <outlet property="viewUrl" destination="VUX-0G-3rq" id="b3W-pe-qTv"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
