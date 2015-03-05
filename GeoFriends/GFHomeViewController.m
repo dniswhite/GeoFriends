@@ -17,6 +17,8 @@
 @interface GFHomeViewController ()
 <CLLocationManagerDelegate, GFUserProfileDelegate>
 
+@property bool mapZoomed;
+
 
 @end
 
@@ -48,6 +50,8 @@
 }
 
 -(void) setupHandlers {
+    [self setMapZoomed:NO];
+    
     UITapGestureRecognizer *recognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideKeyboard)];
     [[self view] addGestureRecognizer:recognizer];
 }
@@ -84,12 +88,21 @@
 -(void) locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
     CLLocation *location = locations.lastObject;
     
-    MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(location.coordinate, 2*METERS_MILE, 2*METERS_MILE);
-    [[self mapFriends] setRegion:viewRegion animated:YES];
+    if ([self mapZoomed] == NO) {
+        MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(location.coordinate, 2*METERS_MILE, 2*METERS_MILE);
+        [[self mapFriends] setRegion:viewRegion animated:YES];
+        
+        [self setMapZoomed:YES];
+    }
 }
 
-- (IBAction)getDataFromServer:(id)sender {
-    NSString *urlString = [baseURLString stringByAppendingString:@"/stations/radius/39.0787694/-119.7838515/5/reg/Price/rfej9napna.json?"];
+- (void) refreshUserLocation {
+    [self getLocalFriends:CLLocationCoordinate2DMake([[self mapFriends] centerCoordinate].latitude, [[self mapFriends] centerCoordinate].longitude)];
+}
+
+-(void) getLocalFriends: (CLLocationCoordinate2D) location {
+    NSString *urlString = [baseURLString stringByAppendingString:[NSString stringWithFormat:@"/stations/radius/%1.6f/%1.6f//5/reg/Price/rfej9napna.json?", location.latitude, location.longitude]];
+    
     NSURL *url = [NSURL URLWithString:urlString];
     NSURLRequest* request = [NSURLRequest requestWithURL:url];
     
@@ -119,6 +132,10 @@
     
     // 5
     [operation start];
+}
+
+- (IBAction)getDataFromServer:(id)sender {
+    [self getLocalFriends:CLLocationCoordinate2DMake([[self mapFriends] centerCoordinate].latitude, [[self mapFriends] centerCoordinate].longitude)];
 }
 
 - (IBAction)logoutUser:(id)sender {

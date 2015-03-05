@@ -147,8 +147,32 @@
                 [alertView show];
             }
         }];
-        
     }
+}
+
+-(BOOL) saveUserInformation {
+    BOOL result = NO;
+    [self hideKeyboard];
+    
+    if ([self validateProfile]) {
+        result = YES;
+        
+        PFUser *user = [PFUser currentUser];
+        user[@"name"] = self.nameText.text;
+        user[@"location"] = self.locationText.text;
+        user[@"bio"] = self.bioText.text;
+        
+        // either an empty string or text in the control (dont send it nil)
+        user[@"url"] = ([[[self urlText] text] isEqualToString:@""]) ? @"" : self.urlText.text;
+        
+        if (NO == [user save]) {
+            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Unable to save user information." message:nil delegate:self cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
+            [alertView show];
+            result = NO;
+        }
+    }
+    
+    return result;
 }
 
 -(BOOL) validateProfile {

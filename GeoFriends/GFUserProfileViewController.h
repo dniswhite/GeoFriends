@@ -34,4 +34,6 @@
 
 - (IBAction)doneClicked:(id)sender;
 
+-(BOOL) saveUserInformation;
+
 @end

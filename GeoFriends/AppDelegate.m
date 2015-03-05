@@ -15,7 +15,7 @@
 #import <Parse/Parse.h>
 
 @interface AppDelegate ()
-<GFLoginDelegate, GFHomeDelegate, GFUserProfileDelegate>
+<GFLoginDelegate, GFHomeDelegate, GFUserProfileDelegate, UITabBarControllerDelegate>
 
 @end
 
@@ -30,7 +30,9 @@
     // ****************************************************************************
     
     [self setNavigationController: [[UINavigationController alloc] initWithRootViewController:[[UIViewController alloc] init]]];
+    
     [self setTabController: [[UITabBarController alloc] init]];
+    [[self tabController] setDelegate:self];
     
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
 
@@ -107,6 +109,29 @@
 
 -(void) userProfileComplete:(GFUserProfileViewController *)controller {
     [self displayGFHomeView];
+}
+
+-(void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController {
+    if ([viewController isKindOfClass:[GFHomeViewController class]]) {
+        GFHomeViewController *home = (GFHomeViewController *) [[self tabController] selectedViewController];
+        [home refreshUserLocation];
+    } else if ([viewController isKindOfClass:[GFUserProfileViewController class]]) {
+        int m = 1;
+    }
+}
+
+-(BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController {
+    if ([[self tabController] selectedViewController] == viewController) {
+        return YES;
+    } else {
+        if ([[[self tabController] selectedViewController] isKindOfClass:[GFUserProfileViewController class]]) {
+            GFUserProfileViewController *profile = (GFUserProfileViewController *)[[self tabController] selectedViewController];
+            if (NO == [profile saveUserInformation]) {
+                return NO;
+            }
+        } 
+    }
+    return YES;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
