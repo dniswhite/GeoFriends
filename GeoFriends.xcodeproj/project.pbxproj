@@ -55,6 +55,9 @@
 		8C4B92DA1A85C7D900DEEBC2 /* UIProgressView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C4B92C71A85C7D900DEEBC2 /* UIProgressView+AFNetworking.m */; };
 		8C4B92DB1A85C7D900DEEBC2 /* UIRefreshControl+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C4B92C91A85C7D900DEEBC2 /* UIRefreshControl+AFNetworking.m */; };
 		8C4B92DC1A85C7D900DEEBC2 /* UIWebView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C4B92CB1A85C7D900DEEBC2 /* UIWebView+AFNetworking.m */; };
+		8C4B943C1AA94ED800DEEBC2 /* DNISActionSheetBlocks.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C4B943B1AA94ED800DEEBC2 /* DNISActionSheetBlocks.m */; };
+		8C4B94401AAAB80500DEEBC2 /* GFLogoutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C4B943E1AAAB80500DEEBC2 /* GFLogoutViewController.m */; };
+		8C4B94411AAAB80500DEEBC2 /* GFLogoutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8C4B943F1AAAB80500DEEBC2 /* GFLogoutViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -132,6 +135,11 @@
 		8C4B92C91A85C7D900DEEBC2 /* UIRefreshControl+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIRefreshControl+AFNetworking.m"; sourceTree = "<group>"; };
 		8C4B92CA1A85C7D900DEEBC2 /* UIWebView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWebView+AFNetworking.h"; sourceTree = "<group>"; };
 		8C4B92CB1A85C7D900DEEBC2 /* UIWebView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWebView+AFNetworking.m"; sourceTree = "<group>"; };
+		8C4B943A1AA94ED800DEEBC2 /* DNISActionSheetBlocks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DNISActionSheetBlocks.h; sourceTree = "<group>"; };
+		8C4B943B1AA94ED800DEEBC2 /* DNISActionSheetBlocks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DNISActionSheetBlocks.m; sourceTree = "<group>"; };
+		8C4B943D1AAAB80500DEEBC2 /* GFLogoutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GFLogoutViewController.h; sourceTree = "<group>"; };
+		8C4B943E1AAAB80500DEEBC2 /* GFLogoutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GFLogoutViewController.m; sourceTree = "<group>"; };
+		8C4B943F1AAAB80500DEEBC2 /* GFLogoutViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GFLogoutViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -184,6 +192,7 @@
 		8C3B5FC71A62F47800847621 /* GeoFriends */ = {
 			isa = PBXGroup;
 			children = (
+				8C4B94391AA94EAF00DEEBC2 /* DNISActionSheet */,
 				8C4B92A61A85C7D900DEEBC2 /* AFNetworking */,
 				8C4B92BA1A85C7D900DEEBC2 /* UIKit+AFNetworking */,
 				8C3B5FCC1A62F47800847621 /* AppDelegate.h */,
@@ -208,6 +217,7 @@
 		8C3B5FEE1A6307E700847621 /* GeoFriendsViews */ = {
 			isa = PBXGroup;
 			children = (
+				8C4B943F1AAAB80500DEEBC2 /* GFLogoutViewController.xib */,
 				8C3B609E1A772EB100847621 /* GFUserProfileViewController.xib */,
 				8C3B60081A63101A00847621 /* GFHomeViewController.xib */,
 				8C3B5FD71A62F47800847621 /* LaunchScreen.xib */,
@@ -228,6 +238,8 @@
 				8C3B60021A630FE000847621 /* GFNewUserViewController.m */,
 				8C3B60061A63101A00847621 /* GFHomeViewController.h */,
 				8C3B60071A63101A00847621 /* GFHomeViewController.m */,
+				8C4B943D1AAAB80500DEEBC2 /* GFLogoutViewController.h */,
+				8C4B943E1AAAB80500DEEBC2 /* GFLogoutViewController.m */,
 			);
 			name = GeoFriendsControllers;
 			sourceTree = "<group>";
@@ -316,6 +328,15 @@
 			path = "UIKit+AFNetworking";
 			sourceTree = "<group>";
 		};
+		8C4B94391AA94EAF00DEEBC2 /* DNISActionSheet */ = {
+			isa = PBXGroup;
+			children = (
+				8C4B943A1AA94ED800DEEBC2 /* DNISActionSheetBlocks.h */,
+				8C4B943B1AA94ED800DEEBC2 /* DNISActionSheetBlocks.m */,
+			);
+			name = DNISActionSheet;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -375,6 +396,7 @@
 			files = (
 				8C3B60A01A772EB100847621 /* GFUserProfileViewController.xib in Resources */,
 				8C3B5FD91A62F47800847621 /* LaunchScreen.xib in Resources */,
+				8C4B94411AAAB80500DEEBC2 /* GFLogoutViewController.xib in Resources */,
 				8C3B60051A630FE000847621 /* GFNewUserViewController.xib in Resources */,
 				8C3B5FD61A62F47800847621 /* Images.xcassets in Resources */,
 				8C3B60001A630F6900847621 /* GFLoginViewController.xib in Resources */,
@@ -402,6 +424,7 @@
 				8C3B60041A630FE000847621 /* GFNewUserViewController.m in Sources */,
 				8C4B92D81A85C7D900DEEBC2 /* UIButton+AFNetworking.m in Sources */,
 				8C4B92D91A85C7D900DEEBC2 /* UIImageView+AFNetworking.m in Sources */,
+				8C4B943C1AA94ED800DEEBC2 /* DNISActionSheetBlocks.m in Sources */,
 				8C3B5FFF1A630F6900847621 /* GFLoginViewController.m in Sources */,
 				8C3B5FCB1A62F47800847621 /* main.m in Sources */,
 				8C4B92D71A85C7D900DEEBC2 /* UIAlertView+AFNetworking.m in Sources */,
@@ -410,6 +433,7 @@
 				8C4B92CD1A85C7D900DEEBC2 /* AFHTTPRequestOperationManager.m in Sources */,
 				8C4B92DB1A85C7D900DEEBC2 /* UIRefreshControl+AFNetworking.m in Sources */,
 				8C4B92D01A85C7D900DEEBC2 /* AFSecurityPolicy.m in Sources */,
+				8C4B94401AAAB80500DEEBC2 /* GFLogoutViewController.m in Sources */,
 				8C4B92D31A85C7D900DEEBC2 /* AFURLResponseSerialization.m in Sources */,
 				8C4B92CC1A85C7D900DEEBC2 /* AFHTTPRequestOperation.m in Sources */,
 			);
