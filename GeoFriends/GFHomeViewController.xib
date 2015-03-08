@@ -16,47 +16,15 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="7La-ut-DLZ">
-                    <rect key="frame" x="0.0" y="0.0" width="600" height="365"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="365" id="fd7-m3-JLp"/>
-                    </constraints>
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                 </mapView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Home View Screen" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4fH-eM-iFV">
-                    <rect key="frame" x="227" y="483" width="146" height="21"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="URP-Ra-on5">
-                    <rect key="frame" x="277" y="512" width="46" height="30"/>
-                    <state key="normal" title="Button">
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <connections>
-                        <action selector="getDataFromServer:" destination="-1" eventType="touchUpInside" id="6nl-lw-gRH"/>
-                    </connections>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xht-PX-Ys7">
-                    <rect key="frame" x="277" y="429" width="46" height="30"/>
-                    <state key="normal" title="Button">
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <connections>
-                        <action selector="logoutUser:" destination="-1" eventType="touchUpInside" id="ueT-ny-3ps"/>
-                    </connections>
-                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="7La-ut-DLZ" secondAttribute="trailing" id="1PM-8N-OpH"/>
-                <constraint firstItem="4fH-eM-iFV" firstAttribute="centerX" secondItem="7La-ut-DLZ" secondAttribute="centerX" id="AVK-12-1g2"/>
-                <constraint firstAttribute="bottom" secondItem="4fH-eM-iFV" secondAttribute="bottom" constant="96" id="C8v-ps-bNL"/>
-                <constraint firstItem="URP-Ra-on5" firstAttribute="centerX" secondItem="4fH-eM-iFV" secondAttribute="centerX" id="FOH-dw-a4q"/>
-                <constraint firstItem="7La-ut-DLZ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="JCP-FK-PdZ"/>
-                <constraint firstItem="7La-ut-DLZ" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Kw5-gP-2hN"/>
-                <constraint firstItem="Xht-PX-Ys7" firstAttribute="leading" secondItem="URP-Ra-on5" secondAttribute="leading" id="YVG-Hc-kDL"/>
-                <constraint firstItem="4fH-eM-iFV" firstAttribute="top" secondItem="Xht-PX-Ys7" secondAttribute="bottom" constant="24" id="dgH-Sl-DIe"/>
-                <constraint firstItem="URP-Ra-on5" firstAttribute="top" secondItem="4fH-eM-iFV" secondAttribute="bottom" constant="8" symbolic="YES" id="eoH-wQ-HwA"/>
+                <constraint firstAttribute="trailing" secondItem="7La-ut-DLZ" secondAttribute="trailing" id="09a-Qx-KTZ"/>
+                <constraint firstAttribute="bottom" secondItem="7La-ut-DLZ" secondAttribute="bottom" id="KRL-xk-mXS"/>
+                <constraint firstItem="7La-ut-DLZ" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="LIZ-kw-P6x"/>
+                <constraint firstItem="7La-ut-DLZ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="pZJ-bV-fke"/>
             </constraints>
             <point key="canvasLocation" x="245" y="321"/>
         </view>

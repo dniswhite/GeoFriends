@@ -11,11 +11,14 @@
 #import "GFLoginViewController.h"
 #import "GFHomeViewController.h"
 #import "GFUserProfileViewController.h"
+#import "GFLogoutViewController.h"
+
+#import "DNISActionSheetBlocks.h"
 
 #import <Parse/Parse.h>
 
 @interface AppDelegate ()
-<GFLoginDelegate, GFHomeDelegate, GFUserProfileDelegate, UITabBarControllerDelegate>
+<GFLoginDelegate, GFUserProfileDelegate, UITabBarControllerDelegate>
 
 @end
 
@@ -68,24 +71,24 @@
 
 -(void) displayGFHomeView {
     GFHomeViewController *homeViewController = [[GFHomeViewController alloc] initWithNibName:nil bundle:nil];
-    homeViewController.delegate = self;
     
+    [[homeViewController tabBarItem] setTitle:@"Friends"];
+    [[homeViewController tabBarItem] setImage:[UIImage imageNamed:@"friends"]];
+
     GFUserProfileViewController *profileViewController = [[GFUserProfileViewController alloc] initWithNibName:nil bundle:nil];
     
     [[profileViewController tabBarItem] setTitle:@"Profile"];
     [[profileViewController tabBarItem] setImage:[UIImage imageNamed:@"id_profile"]];
     
-    [[homeViewController tabBarItem] setTitle:@"Friends"];
-    [[homeViewController tabBarItem] setImage:[UIImage imageNamed:@"friends"]];
+    GFLogoutViewController *logoutView = [[GFLogoutViewController alloc] initWithCoder:nil];
     
-    [[self tabController] setViewControllers:[NSArray arrayWithObjects:homeViewController, profileViewController, nil] animated:YES];
+    [[logoutView tabBarItem] setTitle:@"Logout"];
+    [[logoutView tabBarItem] setImage:[UIImage imageNamed:@"logout"]];
+    
+    [[self tabController] setViewControllers:[NSArray arrayWithObjects:homeViewController, profileViewController, logoutView, nil] animated:YES];
     [[[self tabController] tabBar] setBarTintColor:[UIColor blackColor]];
     
     [[self window] setRootViewController:[self tabController]];
-}
-
--(void) userLoggedOut:(GFHomeViewController *)controller {
-    [self presentUserView];
 }
 
 -(void) displayGFLoginView {
@@ -115,23 +118,38 @@
     if ([viewController isKindOfClass:[GFHomeViewController class]]) {
         GFHomeViewController *home = (GFHomeViewController *) [[self tabController] selectedViewController];
         [home refreshUserLocation];
-    } else if ([viewController isKindOfClass:[GFUserProfileViewController class]]) {
-        int m = 1;
     }
 }
 
 -(BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController {
+    BOOL showView = NO;
+    
     if ([[self tabController] selectedViewController] == viewController) {
-        return YES;
+        showView = YES;
+    } else if ([viewController isKindOfClass:[GFLogoutViewController class]]) {
+        DNISActionSheetBlocks *logoutSheet = [[DNISActionSheetBlocks alloc] initWithTitleAndButtons:@"Are you sure you want to logout?" cancelButtonTitle:@"Cancel" destructiveButtonTitle:@"Logout" otherButtonTitles:nil];
+        
+        [logoutSheet setBlockDestructiveDismissButton:^(UIActionSheet * sheet, NSInteger index) {
+            NSLog(@"user logging out");
+            
+            [PFUser logOut];
+            [self presentUserView];
+        }];
+        
+        [logoutSheet setActionSheetStyle:UIActionSheetStyleDefault];
+        [logoutSheet showInView: [[[self tabController] selectedViewController] view]];
     } else {
         if ([[[self tabController] selectedViewController] isKindOfClass:[GFUserProfileViewController class]]) {
             GFUserProfileViewController *profile = (GFUserProfileViewController *)[[self tabController] selectedViewController];
-            if (NO == [profile saveUserInformation]) {
-                return NO;
+            if (YES == [profile saveUserInformation]) {
+                showView = YES;
             }
-        } 
+        } else {
+            showView = YES;
+        }
     }
-    return YES;
+    
+    return showView;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

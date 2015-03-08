@@ -13,23 +13,11 @@
 
 static NSString *baseURLString = @"http://devapi.mygasfeed.com/";
 
-@class GFHomeViewController;
-
-@protocol GFHomeDelegate <NSObject>
-
--(void) userLoggedOut: (GFHomeViewController *) controller;
-
-@end
-
 @interface GFHomeViewController : UIViewController
 
 @property (nonatomic, strong) CLLocationManager *locationManager;
 
 @property (weak, nonatomic) IBOutlet MKMapView *mapFriends;
-@property (nonatomic, weak) id<GFHomeDelegate> delegate;
-
-- (IBAction)getDataFromServer:(id)sender;
-- (IBAction)logoutUser:(id)sender;
 
 - (void) refreshUserLocation;
 

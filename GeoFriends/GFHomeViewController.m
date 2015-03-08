@@ -11,14 +11,15 @@
 
 #import <Parse/Parse.h>
 
+#import "DNISActionSheetBlocks.h"
+
 #define METERS_MILE 1609.344
 #define METERS_FEET 3.28084
 
 @interface GFHomeViewController ()
-<CLLocationManagerDelegate, GFUserProfileDelegate>
+<CLLocationManagerDelegate>
 
 @property bool mapZoomed;
-
 
 @end
 
@@ -36,40 +37,24 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    [self setupHandlers];
+}
+
+-(void) setupHandlers {
     [[self mapFriends] setShowsUserLocation:YES];
     
     self.locationManager = [[CLLocationManager alloc] init];
     
     [[self locationManager] setDelegate:self];
     [[self locationManager] requestWhenInUseAuthorization];
-
+    
     [[self locationManager] setDesiredAccuracy:kCLLocationAccuracyBest];
     [[self locationManager] startUpdatingLocation];
     
-    [self setupHandlers];
-}
-
--(void) setupHandlers {
     [self setMapZoomed:NO];
     
     UITapGestureRecognizer *recognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideKeyboard)];
     [[self view] addGestureRecognizer:recognizer];
-}
-
--(void) logout {
-    [PFUser logOut];
-    [[self delegate] userLoggedOut:self];
-}
-
--(void) profile {
-    GFUserProfileViewController *userProfile = [[GFUserProfileViewController alloc] initWithNibName:nil bundle:nil];
-    userProfile.delegate = self;
-
-    [[self navigationController] presentViewController:userProfile animated:YES completion:nil];
-}
-
--(void) userProfileComplete:(GFUserProfileViewController *)controller {
-    
 }
 
 -(void)hideKeyboard {
@@ -111,16 +96,15 @@
     
     
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSString *string = @"some data";
         NSDictionary *data = (NSDictionary *)responseObject;
         
         NSArray *stations = data[@"stations"];
         for (id object in stations) {
-            NSString *debug2 = @"";
+            NSString *stationId = object[@"id"];
+            NSString *stationLat = object[@"lat"];
+            NSString *stationLon = object[@"lng"];
             
         }
-        NSString *debug1 = @"";
-        
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error Retrieving Fuel Information"
                                                             message:[error localizedDescription]
@@ -130,16 +114,7 @@
         [alertView show];
     }];
     
-    // 5
     [operation start];
 }
 
-- (IBAction)getDataFromServer:(id)sender {
-    [self getLocalFriends:CLLocationCoordinate2DMake([[self mapFriends] centerCoordinate].latitude, [[self mapFriends] centerCoordinate].longitude)];
-}
-
-- (IBAction)logoutUser:(id)sender {
-    [PFUser logOut];
-    [[self delegate] userLoggedOut:self];
-}
 @end
