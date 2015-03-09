@@ -58,6 +58,9 @@
 		8C4B943C1AA94ED800DEEBC2 /* DNISActionSheetBlocks.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C4B943B1AA94ED800DEEBC2 /* DNISActionSheetBlocks.m */; };
 		8C4B94401AAAB80500DEEBC2 /* GFLogoutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C4B943E1AAAB80500DEEBC2 /* GFLogoutViewController.m */; };
 		8C4B94411AAAB80500DEEBC2 /* GFLogoutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8C4B943F1AAAB80500DEEBC2 /* GFLogoutViewController.xib */; };
+		8C4B94491AAD548900DEEBC2 /* JPSThumbnailAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C4B94451AAD548900DEEBC2 /* JPSThumbnailAnnotation.m */; };
+		8C4B944A1AAD548900DEEBC2 /* JPSThumbnailAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C4B94471AAD548900DEEBC2 /* JPSThumbnailAnnotationView.m */; };
+		8C4B944B1AAD548900DEEBC2 /* JPSThumnail.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C4B94481AAD548900DEEBC2 /* JPSThumnail.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -140,6 +143,12 @@
 		8C4B943D1AAAB80500DEEBC2 /* GFLogoutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GFLogoutViewController.h; sourceTree = "<group>"; };
 		8C4B943E1AAAB80500DEEBC2 /* GFLogoutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GFLogoutViewController.m; sourceTree = "<group>"; };
 		8C4B943F1AAAB80500DEEBC2 /* GFLogoutViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GFLogoutViewController.xib; sourceTree = "<group>"; };
+		8C4B94431AAD548900DEEBC2 /* JPSThumbnail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPSThumbnail.h; sourceTree = "<group>"; };
+		8C4B94441AAD548900DEEBC2 /* JPSThumbnailAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPSThumbnailAnnotation.h; sourceTree = "<group>"; };
+		8C4B94451AAD548900DEEBC2 /* JPSThumbnailAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JPSThumbnailAnnotation.m; sourceTree = "<group>"; };
+		8C4B94461AAD548900DEEBC2 /* JPSThumbnailAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPSThumbnailAnnotationView.h; sourceTree = "<group>"; };
+		8C4B94471AAD548900DEEBC2 /* JPSThumbnailAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JPSThumbnailAnnotationView.m; sourceTree = "<group>"; };
+		8C4B94481AAD548900DEEBC2 /* JPSThumnail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JPSThumnail.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -175,6 +184,7 @@
 		8C3B5FBC1A62F47800847621 = {
 			isa = PBXGroup;
 			children = (
+				8C4B94421AAD548900DEEBC2 /* JPSThumbnailAnnotation */,
 				8C3B600D1A63A8BD00847621 /* Frameworks */,
 				8C3B5FC71A62F47800847621 /* GeoFriends */,
 				8C3B5FC61A62F47800847621 /* Products */,
@@ -337,6 +347,19 @@
 			name = DNISActionSheet;
 			sourceTree = "<group>";
 		};
+		8C4B94421AAD548900DEEBC2 /* JPSThumbnailAnnotation */ = {
+			isa = PBXGroup;
+			children = (
+				8C4B94431AAD548900DEEBC2 /* JPSThumbnail.h */,
+				8C4B94441AAD548900DEEBC2 /* JPSThumbnailAnnotation.h */,
+				8C4B94451AAD548900DEEBC2 /* JPSThumbnailAnnotation.m */,
+				8C4B94461AAD548900DEEBC2 /* JPSThumbnailAnnotationView.h */,
+				8C4B94471AAD548900DEEBC2 /* JPSThumbnailAnnotationView.m */,
+				8C4B94481AAD548900DEEBC2 /* JPSThumnail.m */,
+			);
+			path = JPSThumbnailAnnotation;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -416,7 +439,9 @@
 				8C3B60091A63101A00847621 /* GFHomeViewController.m in Sources */,
 				8C4B92CF1A85C7D900DEEBC2 /* AFNetworkReachabilityManager.m in Sources */,
 				8C4B92D51A85C7D900DEEBC2 /* AFNetworkActivityIndicatorManager.m in Sources */,
+				8C4B944A1AAD548900DEEBC2 /* JPSThumbnailAnnotationView.m in Sources */,
 				8C3B5FCE1A62F47800847621 /* AppDelegate.m in Sources */,
+				8C4B944B1AAD548900DEEBC2 /* JPSThumnail.m in Sources */,
 				8C4B92D11A85C7D900DEEBC2 /* AFURLConnectionOperation.m in Sources */,
 				8C4B92DA1A85C7D900DEEBC2 /* UIProgressView+AFNetworking.m in Sources */,
 				8C4B92CE1A85C7D900DEEBC2 /* AFHTTPSessionManager.m in Sources */,
@@ -428,6 +453,7 @@
 				8C3B5FFF1A630F6900847621 /* GFLoginViewController.m in Sources */,
 				8C3B5FCB1A62F47800847621 /* main.m in Sources */,
 				8C4B92D71A85C7D900DEEBC2 /* UIAlertView+AFNetworking.m in Sources */,
+				8C4B94491AAD548900DEEBC2 /* JPSThumbnailAnnotation.m in Sources */,
 				8C4B92DC1A85C7D900DEEBC2 /* UIWebView+AFNetworking.m in Sources */,
 				8C4B92D61A85C7D900DEEBC2 /* UIActivityIndicatorView+AFNetworking.m in Sources */,
 				8C4B92CD1A85C7D900DEEBC2 /* AFHTTPRequestOperationManager.m in Sources */,

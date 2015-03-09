@@ -13,11 +13,13 @@
 
 #import "DNISActionSheetBlocks.h"
 
+#import "JPSThumbnailAnnotation.h"
+
 #define METERS_MILE 1609.344
 #define METERS_FEET 3.28084
 
 @interface GFHomeViewController ()
-<CLLocationManagerDelegate>
+<CLLocationManagerDelegate, MKMapViewDelegate>
 
 @property bool mapZoomed;
 
@@ -42,6 +44,7 @@
 
 -(void) setupHandlers {
     [[self mapFriends] setShowsUserLocation:YES];
+    [[self mapFriends] setDelegate:self];
     
     self.locationManager = [[CLLocationManager alloc] init];
     
@@ -86,7 +89,7 @@
 }
 
 -(void) getLocalFriends: (CLLocationCoordinate2D) location {
-    NSString *urlString = [baseURLString stringByAppendingString:[NSString stringWithFormat:@"/stations/radius/%1.6f/%1.6f//5/reg/Price/rfej9napna.json?", location.latitude, location.longitude]];
+    NSString *urlString = [baseURLString stringByAppendingString:[NSString stringWithFormat:@"/stations/radius/%1.6f/%1.6f//25/reg/Price/rfej9napna.json?", location.latitude, location.longitude]];
     
     NSURL *url = [NSURL URLWithString:urlString];
     NSURLRequest* request = [NSURLRequest requestWithURL:url];
@@ -104,6 +107,14 @@
             NSString *stationLat = object[@"lat"];
             NSString *stationLon = object[@"lng"];
             
+            JPSThumbnail *thumb = [[JPSThumbnail alloc] init];
+            thumb.image = [UIImage imageNamed:@"icon_user"];
+            thumb.title = @"Main Title Goes Here";
+            thumb.subtitle = @"Sub Title Here";
+            thumb.coordinate = CLLocationCoordinate2DMake(stationLat.floatValue, stationLon.floatValue);
+            thumb.disclosureBlock = ^{ NSLog(@"selected annotation"); };
+            [[self mapFriends] addAnnotation:[JPSThumbnailAnnotation annotationWithThumbnail:thumb]];
+            
         }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error Retrieving Fuel Information"
@@ -115,6 +126,27 @@
     }];
     
     [operation start];
+}
+
+#pragma mark - MKMapViewDelegate
+
+- (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view {
+    if ([view conformsToProtocol:@protocol(JPSThumbnailAnnotationViewProtocol)]) {
+        [((NSObject<JPSThumbnailAnnotationViewProtocol> *)view) didSelectAnnotationViewInMap:mapView];
+    }
+}
+
+- (void)mapView:(MKMapView *)mapView didDeselectAnnotationView:(MKAnnotationView *)view {
+    if ([view conformsToProtocol:@protocol(JPSThumbnailAnnotationViewProtocol)]) {
+        [((NSObject<JPSThumbnailAnnotationViewProtocol> *)view) didDeselectAnnotationViewInMap:mapView];
+    }
+}
+
+- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation {
+    if ([annotation conformsToProtocol:@protocol(JPSThumbnailAnnotationProtocol)]) {
+        return [((NSObject<JPSThumbnailAnnotationProtocol> *)annotation) annotationViewInMap:mapView];
+    }
+    return nil;
 }
 
 @end
